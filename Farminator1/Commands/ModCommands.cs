@@ -17,13 +17,12 @@ namespace Farminator1.Commands
     {
         [Command(Aliases = new string[] { "profile" })]
         [Description("create, update, delete or view member profile")]
-        public async Task Profile(CommandEvent invokator, string args)
+        public async Task Profile(CommandEvent invokator, string args, string username)
         {
             try
             {
-                var docBuilder = new StringBuilder();
                 var profileService = new ProfileProviderService();
-                var channelId = invokator.ChannelId;
+                var channelId = new Guid("99837597-ed2b-4f5c-9a05-d3615dca62e7");
                 var serverId = invokator.ServerId;
                 var memberId = invokator!.Mentions!.Users!.First().Id;
                 var farmer = new Farmer();
@@ -38,8 +37,7 @@ namespace Farminator1.Commands
                     case "create":
                         var profile = profileService.Create(farmer);
 
-                        var profileDoc =
-                            await invokator.ParentClient.CreateDocAsync(channelId, title: "", content: profile);
+                        await invokator.ParentClient.CreateDocAsync(channelId, title: $"{farmer.Member.Name}'s Profile", content: profile);
                         break;
                     default:
 

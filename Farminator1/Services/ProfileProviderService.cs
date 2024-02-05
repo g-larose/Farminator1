@@ -14,12 +14,11 @@ namespace Farminator1.Services
     {
         public string Create(Farmer farmer)
         {
-            var title = $"**{farmer!.Member!.Name}'s Profile";
             var content = new StringBuilder();
-            content.Append($"Username: {farmer!.Member!.Name}");
-            content.Append($"Lifetime Corn Grown: {farmer!.LifetimeCornGrown}");
-            content.Append($"Current Corn: {farmer!.CurrentCorn}");
-            content.Append($"Farm Coin: {farmer!.Coin}");
+            content.Append($"Username: {farmer!.Member!.Name}\r\n");
+            content.Append($"Lifetime Corn Grown: {farmer!.LifetimeCornGrown}\r\n");
+            content.Append($"Current Corn: {farmer!.CurrentCorn}\r\n");
+            content.Append($"Farm Coin: {farmer!.Coin}\r\n");
 
             return content.ToString();
         }

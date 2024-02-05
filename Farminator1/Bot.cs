@@ -27,9 +27,11 @@ namespace Farminator1
             client.Prepared
                 .Subscribe(async me =>
                 {
+                    var channelID = new Guid("ac89c524-722d-4fde-a84f-80b5f09166a7");
                     var time = DateTime.Now.ToString(timePattern);
                     var date = DateTime.Now.ToShortDateString();
                     Console.WriteLine($"[{date}][{time}][INFO]  [{me.ParentClient.Name}] talking to gateway...");
+                    await me.ParentClient.CreateMessageAsync(channelID, $"{me.ParentClient.Name} is now connected!");
                 });
 
             client.MemberJoined
